@@ -5,7 +5,7 @@ namespace orders_asp_net_app.Controllers
 {
     public class ProductController : Controller
     {
-        private static IList<Product> ProductList = new List<Product>
+        public readonly static IList<Product> ProductList = new List<Product>
         {
            new Product()
            { 

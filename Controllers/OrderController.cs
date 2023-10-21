@@ -1,14 +1,38 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using orders_asp_net_app.Models;
 
 namespace orders_asp_net_app.Controllers
 {
     public class OrderController : Controller
     {
+        private static IList<Order> OrdersList = new List<Order>()
+        {
+            new Order() 
+            {
+                Id = 1,
+                Date = DateTime.Now,
+                Products = new Product[] { ProductController.ProductList[0], ProductController.ProductList[1] },
+                ClientName = "John Doe",
+                ClientAddress = "123 Main St, City",
+                ClientPhone = 333444555,
+                PaymentMethod = Payment.CASH
+            },
+            new Order() 
+            {
+                Id = 2,
+                Date = DateTime.Now,
+                Products = new Product[] { ProductController.ProductList[2], ProductController.ProductList[3] },    
+                ClientName = "Alice Smith",
+                ClientAddress = "456 Elm St, Town",
+                ClientPhone = 444555666,
+                PaymentMethod = Payment.CREDIT
+            }
+        };
+
         // GET: OrderController
         public ActionResult Index()
         {
-            return View();
+            return View(OrdersList);
         }
 
         // GET: OrderController/Details/5

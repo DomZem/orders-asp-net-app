@@ -14,12 +14,12 @@
 
         public Product[] Products { get; set; }
 
-        public decimal TotalPrice { get; set; }
-
         public string ClientName { get; set; }  
 
-        public string ClientAdress { get; set; }    
+        public string ClientAddress { get; set; }    
 
         public int ClientPhone { get; set; }
+
+        public Payment PaymentMethod { get; internal set; }
     }
 }
