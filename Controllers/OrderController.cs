@@ -86,22 +86,20 @@ namespace orders_asp_net_app.Controllers
         // GET: OrderController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(OrdersList.FirstOrDefault(order => order.Id == id));
         }
 
         // POST: OrderController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, Order order)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            Order orderToRemove = OrdersList.FirstOrDefault(order => order.Id == id);
+
+            if (orderToRemove != null)
+                OrdersList.Remove(orderToRemove);
+
+            return RedirectToAction(nameof(Index));    
         }
     }
 }
