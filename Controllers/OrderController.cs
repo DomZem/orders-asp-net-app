@@ -38,7 +38,7 @@ namespace orders_asp_net_app.Controllers
         // GET: OrderController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return View(OrdersList.FirstOrDefault(order => order.Id == id));
         }
 
         // GET: OrderController/Create
