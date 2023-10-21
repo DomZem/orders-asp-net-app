@@ -67,7 +67,7 @@ namespace orders_asp_net_app.Controllers
         // GET: ProductController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return View(ProductList.FirstOrDefault(product => product.Id == id));
         }
 
         // GET: ProductController/Create
