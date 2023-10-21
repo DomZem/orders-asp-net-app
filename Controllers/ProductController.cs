@@ -90,22 +90,26 @@ namespace orders_asp_net_app.Controllers
         // GET: ProductController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(ProductList.FirstOrDefault(product => product.Id == id));
         }
 
         // POST: ProductController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, Product product)
         {
-            try
+            Product productToUpdate = ProductList.FirstOrDefault(p => p.Id == id);
+
+            if(productToUpdate != null)
             {
-                return RedirectToAction(nameof(Index));
+                productToUpdate.Name = product.Name;
+                productToUpdate.Description = product.Description;
+                productToUpdate.Price = product.Price;
+                productToUpdate.Category = product.Category;
+                productToUpdate.Quantity = product.Quantity;
             }
-            catch
-            {
-                return View();
-            }
+
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: ProductController/Delete/5
