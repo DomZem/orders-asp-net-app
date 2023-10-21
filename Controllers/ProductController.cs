@@ -79,16 +79,12 @@ namespace orders_asp_net_app.Controllers
         // POST: ProductController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Product product)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            product.Id = ProductList.Count + 1;
+            ProductList.Add(product);
+
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: ProductController/Edit/5
