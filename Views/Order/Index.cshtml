@@ -44,7 +44,10 @@
                 @Html.DisplayFor(modelItem => item.PaymentMethod)
             </td>
             <td>
-                @item.Products.Sum(p => p.Price)
+                @if(item.Products != null)
+                {
+                    @item.Products.Sum(p => p.Price)
+                }
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

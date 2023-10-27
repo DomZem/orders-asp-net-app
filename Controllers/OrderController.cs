@@ -44,22 +44,21 @@ namespace orders_asp_net_app.Controllers
         // GET: OrderController/Create
         public ActionResult Create()
         {
+            List<Product> products = (List<Product>)ProductController.ProductList;
+
+            ViewData["Products"] = products;
             return View();
         }
 
         // POST: OrderController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Order order)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            order.Id = OrdersList.Count + 1;
+            OrdersList.Add(order);
+
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: OrderController/Edit/5
