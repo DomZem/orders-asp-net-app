@@ -11,7 +11,7 @@ namespace orders_asp_net_app.Controllers
             {
                 Id = 1,
                 Date = DateTime.Now,
-                Products = new Product[] { ProductController.ProductList[0], ProductController.ProductList[1] },
+                Products = new List < Product > { ProductController.ProductList[0], ProductController.ProductList[1] },
                 ClientName = "John Doe",
                 ClientAddress = "123 Main St, City",
                 ClientPhone = 333444555,
@@ -21,7 +21,7 @@ namespace orders_asp_net_app.Controllers
             {
                 Id = 2,
                 Date = DateTime.Now,
-                Products = new Product[] { ProductController.ProductList[2], ProductController.ProductList[3] },    
+                Products = new List < Product > { ProductController.ProductList[2], ProductController.ProductList[3] },    
                 ClientName = "Alice Smith",
                 ClientAddress = "456 Elm St, Town",
                 ClientPhone = 444555666,

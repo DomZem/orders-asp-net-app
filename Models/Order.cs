@@ -12,7 +12,7 @@
 
         public DateTime Date { get; set; } = DateTime.Now;  
 
-        public Product[] Products { get; set; }
+        public List<Product> Products { get; set; }
 
         public string ClientName { get; set; }  
 

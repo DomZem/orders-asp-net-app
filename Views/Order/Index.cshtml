@@ -22,18 +22,9 @@
                 @Html.DisplayNameFor(model => model.ClientName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ClientAddress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ClientPhone)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.PaymentMethod)
             </th>
-
-            <th>
-                Total price
-            </th>
+            <th>Total price</th>
             <th></th>
         </tr>
     </thead>
@@ -48,12 +39,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ClientName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ClientAddress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ClientPhone)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PaymentMethod)
