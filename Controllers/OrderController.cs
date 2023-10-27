@@ -64,22 +64,26 @@ namespace orders_asp_net_app.Controllers
         // GET: OrderController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(OrdersList.FirstOrDefault(order => order.Id == id));
         }
 
         // POST: OrderController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, Order order)
         {
-            try
+            Order orderToUpdate = OrdersList.FirstOrDefault(order => order.Id == id);
+
+            if (orderToUpdate != null)
             {
-                return RedirectToAction(nameof(Index));
+                orderToUpdate.Date = order.Date;
+                orderToUpdate.ClientName = order.ClientName;
+                orderToUpdate.ClientAddress = order.ClientAddress;
+                orderToUpdate.ClientPhone = order.ClientPhone;
+                orderToUpdate.PaymentMethod = order.PaymentMethod;
             }
-            catch
-            {
-                return View();
-            }
+
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: OrderController/Delete/5
